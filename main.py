@@ -1,19 +1,21 @@
-from turtle import Turtle, Screen
+from random import randint
+from turtle import Screen, Turtle, colormode
 
+colormode(255)
 timmy_turtle = Turtle()
 
-timmy_turtle.shape('turtle')
-timmy_turtle.color('#42d7f5')
-timmy_turtle.pencolor('#000000')
+def get_degree_turn(sides):
+    return 360 / sides
 
-for i in range(0, 5):
-    timmy_turtle.right(36)
-    timmy_turtle.forward(100)
-    timmy_turtle.left(252)
-    
-timmy_turtle.goto(30.90,-95.11)  
-    
-timmy_turtle.circle(50)    
-                 
+min_sides = 3
+max_sides = 11
+for sides in range(min_sides, max_sides):
+    degree_turn = get_degree_turn(sides)
+    timmy_turtle.color(randint(0,255), randint(0,255), randint(0,255))
+    #Draw Shape
+    for i in range(1, sides+1):
+        timmy_turtle.right(degree_turn)
+        timmy_turtle.forward(50)        
+
 screen = Screen()
 screen.exitonclick()
